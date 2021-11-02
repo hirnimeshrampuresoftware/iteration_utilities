@@ -1,12 +1,12 @@
 name: Python (CPython)
 
-on:
-  pull_request:
-    branches:
-      - '*'
-  push:
-    branches:
-      - master
+on: [push]
+ # pull_request:
+  #  branches:
+   #   - '*'
+ # push:
+  #  branches:
+   #   - master
 
 
 jobs:
