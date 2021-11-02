@@ -2,7 +2,7 @@
 set -e -x
 
 # Compile wheels
-if [ `uname -m` != "aarch64" ]; then
+if [ `uname -m` == "i686" ]; then
    /opt/python/cp35-cp35m/bin/pip install pip
    /opt/python/cp35-cp35m/bin/pip install setuptools wheel
    /opt/python/cp35-cp35m/bin/pip wheel /io/ -w wheelhouse/
