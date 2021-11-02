@@ -124,6 +124,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
         docker-image: [manylinux1_i686, manylinux2010_x86_64, manylinux2014_x86_64, manylinux2014_aarch64]  # manylinux1_x86_64 is implicit in manylinux2010_x86_64
     steps:
@@ -131,6 +132,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
+      - name: Set up QEMU
+        if: ${{ matrix.docker-image == 'manylinux2014_aarch64' }}
+        uses: docker/setup-qemu-action@v1          
       - name: Get Docker image
         run: |
           docker pull quay.io/pypa/${{ matrix.docker-image }}
